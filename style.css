@@ -317,9 +317,19 @@ span {
 
 }
 
-.contact form .btn-box.btns .btn{
+.contact button{
+    position: relative;
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    font-weight: bold;
+    border: 2px solid #00abf0;
+    background: transparent;
+    color: #ededed;
     cursor: pointer;
 }
+
 
 .footer {
     display: flex;
