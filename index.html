@@ -85,34 +85,34 @@
     <section class= "contact" id = "contact">
         <h2 class = "heading">Contact <span> Me</span></h2>
 
-        <form action="#">
+        <form class = "row g-3" action="https://formsubmit.co/louis082712@gmail.com" method="POST">
             <div class ="input-box">
                 <div class="input-field">
-                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" name = "name" placeholder="Full Name" required>
                     <span class ="focus"></span>
                 </div>
                 <div class ="input-field">
-                    <input type="text" placeholder="Email Address" required>
+                    <input type="text" name = "email" placeholder="Email Address" required>
                     <span class = focus></span>
                 </div>
             </div>
 
             <div class ="input-box">
                 <div class="input-field">
-                    <input type="number" placeholder="Phone Number" required>
+                    <input type="number" name = "phone" placeholder="Phone Number" required>
                     <span class ="focus"></span>
                 </div>
                 <div class ="input-field">
-                    <input type="text" placeholder="Subject" required>
+                    <input type="text" name= "subject"placeholder="Subject" required>
                     <span class = focus></span>
                 </div>
             </div>
 
             <div class="textarea-field">
-                <textarea name="" id="" cols="30" rows="10" placeholder = "Your Message" required></textarea>
+                <textarea name="" name="message" cols="30" rows="10" placeholder = "Your Message" required></textarea>
                 <span class="focus"></span>
             </div>
-
+            
             <div class="btn-box btns">
                 <button type = "submit" class = "btn">Submit</button>
             </div>
@@ -130,5 +130,6 @@
     </footer>
 
     <script src = "script.js"></script>
+    
 </body>
 </html>
