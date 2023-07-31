@@ -12,6 +12,7 @@ body {
     color: #ededed;
 }
 
+
 .header {
     position: fixed;
     top: 0;
@@ -26,7 +27,7 @@ body {
     transition: .3s;
 }
 
-.header.sticky{
+.header sticky{
     background: #1a2545;
 }
 
@@ -53,11 +54,22 @@ body {
 }
 
 
+#menu-icon {
+    font-size: 3.6rem;
+    color: #ededed;
+    cursor: pointer;
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
 .home {
-    height: 100vh;
     background: url('IMG_4087.JPG') no-repeat;
     background-size: 30%;
-    background-position: 800px;
+    background-position: 900px;
     background-position-y: 100px;
     display: flex;
     align-items: center;
@@ -67,13 +79,13 @@ body {
 
 
 .home-content{
-    max-width: 600px;
+    max-width: 60rem;
 }
 
 .home-content h1{
-    font-size: 56px;
+    font-size: 5.6rem;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.3;
 }
 
 .home-content h1 span {
@@ -99,6 +111,7 @@ body {
     background: transparent;
 
 }
+
 
 .btn-box a{
     position: relative;
@@ -261,7 +274,7 @@ span {
 }
 
 .education-content .content p{
-    font-size: .8rem;
+    font-size: 1.6em;
     padding-top: .5rem;
 }
 
@@ -381,4 +394,93 @@ span {
 
 .footer-iconTop a:hover i{
     color: #00abf0;
+}
+
+
+@media (max-width : 1200px) {
+    html { 
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 991px) {
+    .header{
+        padding: 2rem 4%;
+    }
+
+    section {
+        padding: 10rem 4% 2rem;
+    }
+    
+    .home {
+        padding: 0 4%;
+    }
+
+    .footer {
+        padding: 2rem 4%;
+    }
+}
+
+@media (max-width: 768px){
+    .header {
+        background: #081b29;
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: #081b29;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        transition: .25s ease;
+        transition-delay: .25s;
+    }
+
+    .navbar.active {
+        left: 0;
+        transition-delay: 0s;
+    }
+    .navbar .active-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #1a2545;
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        z-index: -1;
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+
+    .navbar.active .active-nav{
+        left: 0;
+        transition-delay: .25s;
+    }
+
+    .navbar a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        transform: translateX(-20rem);
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+
+    .navbar.active a {
+        transform: translate(0);
+        transition-delay: .25s;
+    }
+
+    .home-imgHover {
+        pointer-events: none;
+        background: #1a2545;
+        opacity: .6;
+    }
 }

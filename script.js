@@ -1,59 +1,60 @@
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
+  // Add event listeners when the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    let menuIcon = document.querySelector("#menu-icon");
+    let navbar = document.querySelector(".navbar");
+    let scrollToTopButton = document.getElementById("scrollToTop");
+    let homeLink = document.querySelector(".homeLink");
 
-window.onscroll = () => {
-  let isHomeActive = true;
-  
-  sections.forEach(sec => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 100;
-    let height = sec.offsetHeight;
-    let id = sec.getAttribute('id');
+    // Toggle mobile menu
+    menuIcon.onclick = function () {
+      menuIcon.classList.toggle("bx-x");
+      navbar.classList.toggle("active");
+    };
 
-    if (top >= offset && top < offset + height) {
-      navLinks.forEach(links => {
-        links.classList.remove('active');
-        if (id !== "home") {
-          document.querySelector('header nav a[href=' + id + ']').classList.add('active');
-          isHomeActive = false;
-        }
-      });
-    }
-  });
-};
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('header nav a').forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      const headerOffset = 100;
+    // Smooth scroll function
+    function smoothScroll(target) {
+      const headerOffset = 0; // Set this to 0 to scroll all the way to the top
       const elementPosition = target.getBoundingClientRect().top;
       const offsetPosition = elementPosition - headerOffset;
 
       window.scrollBy({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
+
+    // Add smooth scroll behavior to navigation links
+    document.querySelectorAll("header nav a").forEach((link) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          smoothScroll(target);
+        }
+      });
+    });
+
+    // Scroll to top when the "footer-iconTop" is clicked
+    scrollToTopButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      smoothScroll(document.querySelector("#home"));
+    });
+
+    // Scroll to top when the "Home" link is clicked
+    homeLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      smoothScroll(document.querySelector("#home"));
+    });
+
+    // Add sticky header on scroll
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 100);
+
+      // Hide mobile menu when clicking outside
+      if (navbar.classList.contains("active") && !menuIcon.contains(event.target)) {
+        menuIcon.classList.remove("bx-x");
+        navbar.classList.remove("active");
+      }
+    });
   });
-});
-
-// Smooth scroll to top when "footer-iconTop" is clicked
-document.getElementById('scrollToTop').addEventListener('click', function (event) {
-    event.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-});
-
-// Smooth scroll to top when "Home" link is clicked
-document.getElementById('homeLink').addEventListener('click', function (event) {
-    event.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
